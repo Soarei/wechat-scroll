@@ -1,0 +1,5 @@
+<navigation-bar title="首页"></navigation-bar>
+<!-- <button style="margin-top: 200rpx;" bindtap="gotoMessage">跳转到消息列表</button> -->
+
+<component-scroll></component-scroll>
+

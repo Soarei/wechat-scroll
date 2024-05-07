@@ -1,0 +1,32 @@
+<scroll-view 
+    scroll-y 
+    class="scroll-container"
+    bindscrolltoupper="handleScrollUpper"
+    bindrefresherrefresh="onRefresh" 
+    refresher-enabled="{{true}}" 
+    refresher-default-style="none"
+    refresher-threshold="{{ 20 }}"
+    upper-threshold="30"
+    scroll-anchoring="{{true}}"
+    scroll-into-view="{{ toView }}"
+ >
+    <!-- 加载效果 -->
+    <view class="loadingIcon" style="display: flex;align-items: center;justify-content: center;padding: 20rpx 0;" wx:if="{{ isRreshing }}">
+      <!-- <van-loading size="25" color="#1989fa"></van-loading> -->
+      正在获取数据
+    </view>
+    <view class="chatlist">
+        <view class="msg_item" wx:for="{{ chatlist }}" wx:key="id">
+            <!-- 每条记录的发送时间 -->
+            <view class="sendtime" wx:if="{{ item.sendTime }}">{{ item.sendTime}}</view>
+            <!-- client代表客户 -->
+            <view class="client" wx:if="{{ item.role == 'user'}}" id="{{ item.id }}">
+              {{ item.context }}
+            </view>
+            <!-- machine代表机器人吧 -->
+            <view class="machine" wx:if="{{ item.role == 'machine'}}" id="{{ item.id }}">
+              <text>{{ item.context }}</text>
+            </view>
+          </view>
+    </view>
+</scroll-view>
